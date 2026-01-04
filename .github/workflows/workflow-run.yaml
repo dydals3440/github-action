@@ -1,0 +1,11 @@
+name: Workflow Run
+on:
+    workflow_run:
+        # events.yaml 에 있는 워크플로우가 종료되면 이 워크플로우도 실행됨
+        workflows: [Repository Events]
+        types: [completed]
+jobs:
+    echo-string:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "I was triggered because 'Repository Events' was completed"
