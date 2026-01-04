@@ -1,0 +1,20 @@
+name: Pull Request Comment
+on:
+    pull_request_target:
+        types: [opened]
+jobs:
+    pr-comment:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Comment on New PRs
+              # octokit.github.io/rest.js
+              uses: actions/github-script@v7
+              with:
+                  # script input이기에 with 사용
+                  script: |
+                      github.rest.issues.createComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.issue.number,
+                        body: "Thanks for contribution"
+                      })
