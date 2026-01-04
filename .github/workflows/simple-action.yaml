@@ -1,0 +1,20 @@
+name: Simple Action
+on: [push]
+
+jobs:
+    simple-action:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Simple JS Action
+              id: greet
+              # @main, @v1.1, @v1.13 (없는 버전은 에러가 남)등
+              # 커밋 아이디도 가능 (예: @f0b021f9e68d0331570e2ede2f0326f1d3c4cf16)
+              uses: actions/hello-world-javascript-action@v1
+              # Inputs (필요한 경우)
+              with:
+                  who-to-greet: Matthew
+                  #Outputs (time)
+            - name: Log Greeting Time
+              # greet id를 사용하여 출력 로그를 출력
+              # 공식문서에 output
+              run: echo "${{ steps.greet.outputs.time}}"
