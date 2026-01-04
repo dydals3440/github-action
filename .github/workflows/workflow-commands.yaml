@@ -21,3 +21,12 @@ jobs:
               run: echo "::debug::This is a debug message"
             - name: Setting a debug message with params
               run: echo "::debug title=Debug title,file=app.js,line=2,endLine=3,col=5,endColumn=7::This is a debug message"
+            - name: Group of logs
+              run: |
+                  echo "::group::My group title"
+                  echo "Inside group"
+                  echo "::endgroup::"
+            - name: Masking a value
+              run: echo "::add-mask::Secret String"
+            - name: Echo a secret
+              run: echo "Secret String"
