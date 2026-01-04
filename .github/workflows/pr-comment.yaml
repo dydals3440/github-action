@@ -9,12 +9,23 @@ jobs:
             - name: Comment on New PRs
               # octokit.github.io/rest.js
               uses: actions/github-script@v7
+              # github token을 기본적으로 발급해주지만 write 권한이 없음
+              # settings -> repository -> action -> general -> GITHUB_TOKEN -> Read and write permissions
               with:
                   # script input이기에 with 사용
                   script: |
-                      github.rest.issues.createComment({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        issue_number: context.issue.number,
-                        body: "Thanks for contribution"
+                      // 리뷰어 지정
+                      await github.rest.pulls.requestReviewers({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          pull_number: context.payload.pull_request.number,
+                          reviewers: ['reviewer1', 'reviewer2']
+                      })
+
+                      // 멘션 코멘트
+                      await github.rest.issues.createComment({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: context.payload.pull_request.number,
+                          body: `👋 @reviewer1 @reviewer2 리뷰 부탁드립니다!`
                       })
