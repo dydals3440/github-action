@@ -8,16 +8,16 @@ jobs:
             - name: Setting an error message
               run: echo "::error::Missing semicolon"
             - name: Setting a error message with params
-              run: echo "::error" title=Error title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+              run: echo "::error title=Error title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
             - name: Setting a warning message
               run: echo "::warning::Possible division by zero"
             - name: Setting a warning message with params
-              run: echo "::warning" title=Warning title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Possible division by zero"
+              run: echo "::warning title=Warning title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Possible division by zero"
             - name: Setting a notice message
               run: echo "::notice::This is a notice message"
             - name: Setting a notice message with params
-              run: echo "::notice" title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::This is a notice message"
+              run: echo "::notice title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::This is a notice message"
             - name: Setting a debug message
               run: echo "::debug::This is a debug message"
             - name: Setting a debug message with params
-              run: echo "::debug" title=Debug title,file=app.js,line=2,endLine=3,col=5,endColumn=7::This is a debug message"
+              run: echo "::debug title=Debug title,file=app.js,line=2,endLine=3,col=5,endColumn=7::This is a debug message"
