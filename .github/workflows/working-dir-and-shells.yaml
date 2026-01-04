@@ -17,6 +17,7 @@ jobs:
                   echo $GITHUB_REPOSITORY
                   echo $GITHUB_WORKSPACE
             - name: Change Working Directory
+              # custom working directory
               working-directory: /home/runner
               run: pwd
     display-wd-info-windows:
